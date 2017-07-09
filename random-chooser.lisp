@@ -4,6 +4,7 @@
 (in-package :robotonosushigo)
 
 ;; Return an element chosen uniformly at random from the list l.
+;; todo Add optional length arg and/or turn into macro?
 (defun randomth (l)
   (nth (random (length l)) l))
 

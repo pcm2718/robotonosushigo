@@ -6,9 +6,11 @@
 ;;;; other chooser and validates the other chooser's choice as a legal
 ;;;; move before returing it. Its intended application is as a wrapper
 ;;;; for untrustworthy choosers, preventing them from silently making
-;;;; illegal choices .
+;;;; illegal choices.
 
-;;;; todo Move validation code to a separate file?
+;;;; todo Move validation code to a separate file? Write some
+;;;; automated testing code for both the chooser and the validation
+;;;; code itself.
 
 (in-package :robotonosushigo)
 
