@@ -7,39 +7,6 @@
 
 (in-package :robotonosushigo)
 
-;; todo Because boards are generated from the log, which tracks
-;; chopsticks that have been played at some point, and not necessarily
-;; chopsticks that are currently in the any board, this function is
-;; necessary to make ensure that chopsticks remain balanced with
-;; usage. I really need to find a better solution than this at some
-;; point.
-(defun count-chopsticks (board)
-  (reduce #'+ (mapcar #'(lambda (x) (count 'ch x)) board)))
-
-(defun valid-chopstick-use-p (board)
-  (< (count-if #'(lambda (x) (eq 2 (length x))) board)
-     (count-chopsticks board)))
-
-;; todo More descriptive name. Fix comment style. Currently validates
-;; playing two cards when chopsticks have already been used. todo Fix hacky
-;; sexp that ensures chopsticks are balanced with length two lists.
-(defun valid-choice-p (choice board hand)
-  ;; The first (and possibly only) card chosen by the player must be
-  ;; in the player's hand.
-  (and (member (car choice) hand)
-       ;; There must also be only one card chosen, or
-       (or (eq 1 (length choice))
-           ;; only two cards chosen, in which case
-           (and (eq 2 (length choice))
-                ;; the second card must be in the player's hand and
-                (member (cadr choice) hand)
-                ;; chopsticks must be in the player's board.
-                ;;(member 'ch board)
-                ;; the hacky chopstick balancer must return true.
-                (valid-chopstick-use-p board)
-                ;; todo Ugly, rewrite comments to put the eq statement down here.
-                t))))
-
 ;; todo Can I find a method that uses return as a delimiter or
 ;; something? read-delimited-list unsafe?
 (defun read-choice ()

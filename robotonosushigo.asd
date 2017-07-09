@@ -1,6 +1,7 @@
 ;;;; robotonosushigo.asd
 ;;;; robotonosushigo ASDF package definition, or:
 ;;;; ロボトのすしごー、 です。
+
 ;;;; todo Is the non-ASCII joke above a bad idea? Even if it isn't, I
 ;;;; should improve the translation. Add testing code in a separate
 ;;;; package?
@@ -22,5 +23,6 @@
   ((:file "decks")
    (:file "scoring")
    (:file "model" :depends-on ("scoring"))
-   (:file "human-choosers")
-   (:file "random-chooser" :depends-on ("human-choosers"))))
+   (:file "validation-choosers")
+   (:file "human-choosers" :depends-on ("validation-choosers"))
+   (:file "random-chooser" :depends-on ("validation-choosers"))))
